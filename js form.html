@@ -1,0 +1,165 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 30%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+<h1>DETAILS</h1>
+<script type="text/javascript">
+
+function validate() {
+	var name=document.getElementById("fname").value; 
+	if( name == "" ||name==null || name.length > 10) {
+		alert( "Please provide your name!" );
+		document.myForm.fname.focus() ;
+		return false;
+	}
+	validateAge()
+}
+     
+var name=document.getElementById("fname").value; 
+function validateAge(){
+	var z,text;
+	z = document.getElementById("age").value;
+	if (isNaN(z) || z < 1 || z > 100)  
+	{
+		text = "age not valid";
+	} else{
+		text = "Submitted";
+	}
+	document.getElementById("status").innerHTML = text;
+}
+ </script>
+<div class ="container">
+<form name="myForm" method="post" onsubmit = "return(validate());">
+<div id="status">Test</div>
+<div class="row">
+      <div class="col-25">
+		<label for="fname">First name:</label>
+</div>
+	<div class="col-75">
+		<input type="text" id="fname" name="fname" required><br><br>
+	</div>
+<div class="row">
+      <div class="col-25">
+<label for="lname">Last name:</label>
+</div>
+	<div class="col-75">
+		<input type="text" id="lname" name="lname"required><br><br>
+	</div>
+<div class="row">
+      <div class="col-25">
+<label for="age">Age:</label>
+</div>
+<div class="col-75">
+<input type="number" id="age" name="age"  min="1" max="100"><br><br>
+</div></div>
+<div class="row">
+      <div class="col-25">
+<label for="dob">DOB:</label>
+</div>
+      <div class="col-75">
+<input type="date" id="dob" name="dob"><br><br>
+</div></div>
+<div class="row">
+      <div class="col-25">
+<label for="address">Address:</label>
+</div>
+  <div class="col-75">
+<textarea id="address" name="address" height="100" width="50"> </textarea><br><br>
+  </div></div>
+<div class="row">
+      <div class="col-25">
+<label for="city">City:</label>
+</div>
+ <div class="col-75">
+<select id="city" name="city" form="city">
+  <option value="select">select</option>
+  <option value="bangalore">Bangalore</option>
+  <option value="kolkata">Kolakata</option>
+  <option value="mumbai">"Mumbai</option>
+</select><br><br>
+</div></div>
+<div class="row">
+      <div class="col-25">
+<label for="state">State:</label>
+</div>
+ <div class="col-75">
+<select id="state" name="state" form="state" required>
+  <option value="select">select</option>
+  <option value="karnataka">Karnataka</option>
+  <option value="West Bengal">West Bengal</option>
+  <option value="Maharashtra">Maharashtra</option>
+</select><br><br>
+</div>
+</div>
+ <div class="row">
+ <button type="submit" value="Submit">Submit</button>
+  <button type="reset" value="Reset">Reset</button>
+ </div>
+</form>
+</div>
+</body>
+</html>
